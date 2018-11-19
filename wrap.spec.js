@@ -11,4 +11,8 @@ describe("wrap", () => {
   it("Returns a string with no more than maxlength characters per line", () => {
     expect(wrap("abcde fgh ijkl", 10)).to.equal("abcde fgh\nijkl");
   });
+  it("Throws an error if any word in the string is longer than maxLen", () => {
+    expect(wrap("abcdef", 3)).to.throw(new Error ('MaxLen must be longer than each word in line'))
+    expect(wrap("abc de fghijklmnopqrs", 10)).to.throw(new Error ('MaxLen must be longer than each word in line'))
+  });
 });
